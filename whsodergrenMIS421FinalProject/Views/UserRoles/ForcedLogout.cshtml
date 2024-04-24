@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["isDashboard"] = false;
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Logged Out</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>You have been logged out.</h1>
+    <p>Your user roles have been updated. For security reasons, you have been logged out. Please return to the homepage and log in again.</p>
+    <p><a href="@Url.Action("Index", "Dashboard")" class="btn btn-success">Go to Homepage</a></p>
+</body>
+</html>
+
+

@@ -6,7 +6,7 @@ namespace whsodergrenMIS421FinalProject
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -16,11 +16,21 @@ namespace whsodergrenMIS421FinalProject
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+                
+
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddRazorPages();
+
+            builder.Services.AddHttpClient();
+
             var app = builder.Build();
+
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBMAY9C3t2UFhhQlJBfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTX5Xd01iWH1acnZUQmFa");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -41,11 +51,12 @@ namespace whsodergrenMIS421FinalProject
 
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+            
             app.Run();
         }
     }

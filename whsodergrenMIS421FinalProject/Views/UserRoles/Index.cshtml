@@ -1,0 +1,37 @@
+﻿@model whsodergrenMIS421FinalProject.Models.UsersAndRoles
+
+<h1>Users and Roles</h1>
+
+<h2>Users</h2>
+<table id="userTable">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@Model.UserRoles[user.Id]</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-link no-a-decoration" title="Edit">
+                        <i class="fa-solid fa-pen fa-lg"></i>
+                    </a> |
+                    <a asp-action="Delete" asp-route-id="@user.Id" class="btn btn-sm btn-link no-a-decoration" title="Delete">
+                        <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script>let table = new DataTable('#userTable');</script>
+}

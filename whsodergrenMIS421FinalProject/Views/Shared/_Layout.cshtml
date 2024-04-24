@@ -3,48 +3,66 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - whsodergrenMIS421FinalProject</title>
+    <title>Budgeting Tool</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/25.1.35/material.css" integrity="sha384-PJtcJrCsS61Bpyw+vSp6W1xDVt9rjR3KQ3NubtgO8RNu3wLP+u1uMNCVKsdNlJfi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/25.1.35/bootstrap5-dark.css" integrity="sha384-4/FPep9NJFzkDwMbzTuPgRZ8oLicTFzDC+xPSWPUjZCBUyddMl39slt1qlfJJas5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" integrity="sha384-w9ufcIOKS67vY4KePhJtmWDp4+Ai5DMaHvqqF85VvjaGYSW2AhIbqorgKYqIJopv" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/whsodergrenMIS421FinalProject.styles.css" asp-append-version="true" />
+    <script src="https://cdn.syncfusion.com/ej2/25.1.35/dist/ej2.min.js" integrity="sha384-KvXdoc9PrpSD0idQ0S3H7OUYdMIncxiRaaylO0g2Q88p7BKw/cLGYIeQCIM1WDfa" crossorigin="anonymous"></script>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">whsodergrenMIS421FinalProject</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<body class="e-bigger">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - whsodergrenMIS421FinalProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <partial name="_SideBar" />
+
+    <nav class="navbar sticky-top">
+        <div class="container-fluid py-2 px-4">
+           
         </div>
-    </footer>
+    </nav>
+
+    <div class="main-content">
+        <div class="container mt-5">
+        <div class="row justify-content-center">
+                <div class="@(ViewData["isDashboard"] == null? "col-md-10" : "col-md-12")">
+                <main role="main" class="pb-3">
+                    @if (ViewData["isDashboard"] == null)
+                    {
+                        <div class="row">
+                        <div class="col-md-7">
+                            <div class="d-flex flex-column mb-5">
+                                <div class="d-flex mb-1">
+                                    <div class="flex-grow-1">
+                                        <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+                                    </div>
+                                    <div>
+                                        @if (ViewData["PageActionText"] != null)
+                                        {
+                                            <a id="new-cat-btn" class="btn btn-success" href="@ViewData["PageActionUrl"]">
+                                                @ViewData["PageActionText"]
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                                <ejs-breadcrumb id="breadcrumb" separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" integrity="sha384-k5vbMeKHbxEZ0AEBTSdR7UjAgWCcUfrS8c0c5b2AfIh7olfhNkyCZYwOfzOQhauK" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <ejs-scripts></ejs-scripts>
 </body>
 </html>

@@ -1,0 +1,27 @@
+﻿@model whsodergrenMIS421FinalProject.Models.UsersAndRoles
+
+<h1>Edit User</h1>
+
+@foreach (var user in Model.Users)
+{
+    <form asp-action="Edit" asp-route-id="@user.Id" method="post">
+        <div>
+            User: @user.Email
+            <input type="hidden" asp-for="@user.Id" value="@user.Id" />
+        </div>
+        <div>
+            <label for="roleName">Assign Role</label>
+            <select name="roleName" class="form-control">
+                @foreach (var role in Model.Roles)
+                {
+                    <option value="@role.Name">@role.Name</option>
+                }
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    </form>
+}
+
+

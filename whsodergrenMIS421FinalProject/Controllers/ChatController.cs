@@ -7,7 +7,7 @@ using whsodergrenMIS421FinalProject.Models;
 public class ChatController : Controller
 {
     private readonly HttpClient _httpClient;
-    private readonly string _openAiApiKey = "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";
+    private readonly string _openAiApiKey = "";
 
     public ChatController()
     {

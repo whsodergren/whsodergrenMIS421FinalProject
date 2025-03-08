@@ -8,10 +8,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="widget">
+                <h1 class="text-center">(Open AI key needed to work)</h1>
                 <h2 id="h1-chat-question" class="text-center">Ask for Financial Advice</h2>
                 <form asp-controller="Chat" asp-action="GetResponse" method="post" >
                     <input type="text" name="UserQuestion" class="form-control" id="UserQuestion" required>
-                    <button type="submit" class="btn btn-success mt-2">Ask</button>
+                    <button disabled="true" type="submit" class="btn btn-success mt-2">Ask</button>
                 </form>
 
                 @if (!string.IsNullOrEmpty(Model.ResponseText))

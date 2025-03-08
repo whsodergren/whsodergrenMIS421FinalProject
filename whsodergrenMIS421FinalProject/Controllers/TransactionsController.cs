@@ -27,7 +27,7 @@ namespace whsodergrenMIS421FinalProject.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         // GET: Transaction/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
@@ -59,7 +59,7 @@ namespace whsodergrenMIS421FinalProject.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         // POST: Transaction/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

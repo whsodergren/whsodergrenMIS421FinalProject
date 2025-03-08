@@ -26,7 +26,7 @@ namespace whsodergrenMIS421FinalProject.Controllers
             return View(await _context.Category.ToListAsync());
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         // GET: Categories/AddOrEdit
         public IActionResult AddOrEdit(int id=0)
         {
@@ -66,7 +66,7 @@ namespace whsodergrenMIS421FinalProject.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
